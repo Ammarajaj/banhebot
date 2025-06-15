@@ -13,7 +13,7 @@ BOT_TOKEN = os.environ.get('BOT_TOKEN', '7809016240:AAEoGRzXHBJpgdLrfx3KpJjzlOjX
 BLOCKED_BOTS = ['HEBot', 'whisperbot', 's8ebot']
 
 # Flask app
-app = Flask(name)
+app = Flask(__name__)
 
 @app.route('/')
 def home():
@@ -52,7 +52,7 @@ async def main():
     await app_bot.run_polling()
 
 # هذا الجزء يتعامل مع تشغيل asyncio داخل بيئات مثل Replit
-if name== "main":
+if __name__== "__main__":
     try:
         asyncio.run(main())
     except RuntimeError as e:
